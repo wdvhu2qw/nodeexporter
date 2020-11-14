@@ -15,6 +15,7 @@ package main
 
 import (
 	"fmt"
+	stdlog "log"
 	"net/http"
 	_ "net/http/pprof"
 	"os"
@@ -121,6 +122,7 @@ func (h *handler) innerHandler(filters ...string) (http.Handler, error) {
 	handler := promhttp.HandlerFor(
 		prometheus.Gatherers{h.exporterMetricsRegistry, r},
 		promhttp.HandlerOpts{
+			ErrorLog:            stdlog.New(log.NewStdlibAdapter(level.Error(h.logger)), "", 0),
 			ErrorHandling:       promhttp.ContinueOnError,
 			MaxRequestsInFlight: h.maxRequests,
 			Registry:            h.exporterMetricsRegistry,

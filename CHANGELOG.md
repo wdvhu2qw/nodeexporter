@@ -5,7 +5,7 @@
 * [FEATURE]
 * [ENHANCEMENT] Include TCP OutRsts in netstat metrics
 * [ENHANCEMENT] Added XFS inode operations to XFS metrics
-* [BUGFIX]
+* [BUGFIX] Add ErrorLog plumbing to promhttp
 
 ## 1.0.1 / 2020-06-15
 
